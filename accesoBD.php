@@ -17,8 +17,8 @@ class accesoBD {
                     'valor' => $campos->value,
                     'fecha' => $campos->date,
                     'tipo' => $campos->type,
-                    'temperatura' => $campos->temperatura,
-                    'humedad' => $campos->humedad,
+                    'temperatura' => $campos->temperature,
+                    'humedad' => $campos->humidity,
                     'id_device' => $campos->id_device
                 );
             }
@@ -33,7 +33,8 @@ class accesoBD {
     public static function subirDatos($value, $type, $temperature, $humidity, $id_device) {
         $pArray = new stdClass();
         $fecha = date('Y-m-d H:i:s');
-        $sql = "INSERT INTO things (value, type, temperatura, humidity, id_device, date) VALUES ('{$value}', '{$type}', '{$temperature}', '{$humidity}', '{$id_device}', '{$fecha}')";
+        $sql = "INSERT INTO things (value, type, temperature, humidity, id_device, date) 
+                VALUES ('{$value}', '{$type}', '{$temperature}', '{$humidity}', '{$id_device}', '{$fecha}')";
         if (conexion::ejecutarSQL($sql)) {
             $pArray->code = '200';
         } else {
